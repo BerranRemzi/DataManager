@@ -8,7 +8,7 @@
 #define MY_PASSWORD 'P'
 
 
-TEST(Malloc, Malloc_0x0001) {
+TEST(Malloc, 0x0001_Name1) {
     uint8_t read[8];
     uint8_t write[] = "Name1";
 
@@ -18,7 +18,7 @@ TEST(Malloc, Malloc_0x0001) {
     //EXPECT_EQ(1, 1);
     EXPECT_TRUE(strcmp((char*)write, (char*)read) == STR_EQUAL);
 }
-TEST(Malloc, Malloc_0x0002) {
+TEST(Malloc, 0x0002_Name2) {
     uint8_t read[8];
     uint8_t write[] = "Name2";
 
@@ -30,7 +30,7 @@ TEST(Malloc, Malloc_0x0002) {
     EXPECT_TRUE(strcmp((char*)write, (char*)read) == STR_EQUAL);
 }
 #if 1
-TEST(Malloc, Malloc_0x0101) {
+TEST(Malloc, 0x0101_Password1) {
     uint8_t read[16];
     uint8_t write[] = "Password1";
 
@@ -41,7 +41,7 @@ TEST(Malloc, Malloc_0x0101) {
     //EXPECT_EQ(1, 1);
     EXPECT_TRUE(strcmp((char*)write, (char*)read) == STR_EQUAL);
 }
-TEST(Malloc, Malloc_0x0102) {
+TEST(Malloc, 0x0102_Password2) {
     uint8_t read[16];
     uint8_t write[] = "Password2";
 
@@ -52,7 +52,7 @@ TEST(Malloc, Malloc_0x0102) {
     //EXPECT_EQ(1, 1);
     EXPECT_TRUE(strcmp((char*)write, (char*)read) == STR_EQUAL);
 }
-TEST(Malloc, Malloc_0x0102_Hello) {
+TEST(Malloc, 0x0102_Hello) {
     uint8_t read[16];
     uint8_t write[] = "Hello";
 
@@ -65,7 +65,7 @@ TEST(Malloc, Malloc_0x0102_Hello) {
 }
 #endif
 
-TEST(Read, Malloc_0x0000) {
+TEST(Read, 0x0000_Null) {
     uint8_t read[16];
     uint8_t write[16] = "";
 
@@ -76,9 +76,9 @@ TEST(Read, Malloc_0x0000) {
     //EXPECT_EQ(1, 1);
     EXPECT_TRUE(strcmp((char*)write, (char*)read) == STR_EQUAL);
 }
-TEST(Read, Malloc_0x0001) {
+TEST(Read, 0x0001_Name1) {
     uint8_t read[16];
-    uint8_t write[16] = "Name1";
+    uint8_t write[] = "Name1";
 
     //MyMalloc(sizeof(write), 0x0102, write);
     DM_Read(0x0001, read, NULL);
@@ -86,4 +86,16 @@ TEST(Read, Malloc_0x0001) {
 
     //EXPECT_EQ(1, 1);
     EXPECT_TRUE(strcmp((char*)write, (char*)read) == STR_EQUAL);
+}
+
+TEST(Defragment, Defragment) {
+    printf("Before:\n");
+    Print();
+
+    DM_Defragment();
+
+    printf("\nAfter:\n");
+    Print();
+
+    EXPECT_EQ(1, 1);
 }
